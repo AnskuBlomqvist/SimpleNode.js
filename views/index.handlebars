@@ -1,2 +1,20 @@
 <h1>{{pagetitle}}</h1>
+
+{{#if desc}}
 <p>{{desc}}</p>
+{{else}}
+<p>No content</p>
+{{/if}}
+
+{{#each plants}}
+  <div class ="card">
+    <h2>{{this.name}}</h2>
+    <p>Latinankielinen nimi: {{this.latinName}}</p>
+    <p>Kasvin väritys: {{this.colors}}</p>
+    {{#if this.flowers}}
+    <p>Kasvi kukkii</p>
+    {{else}}
+    <p>Kasvi ei kuki</p>
+    {{/if}}
+  </div>
+{{/each}}
