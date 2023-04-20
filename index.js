@@ -1,3 +1,10 @@
+/*Ansku Blomqvist TRTKM21
+
+Tää jäi loppupeleissä vajaaksi, en ehtinyt noita erroreita
+kaikkiin kohtiin väsäämään, meinasin tulla kiire saada kaikki valmiiksi
+ennen iltavuoroa. Tätä oli kiva tehdä, pitäisi kyllä käyttää reilusti enemmän
+aikaa ja opetella kunnolla käyttämään CSS*/
+
 const express = require('express');
 const exphbs = require('express-handlebars');
 const app = express();
@@ -19,6 +26,15 @@ let plants = [
   { id: 11, name: 'Kirjopunalehti', latinName: 'Iresine herbstii', colors: ['punainen','musta'], flowers: false },
 
 ];
+/* POSTMANissa käytetty pätkä
+
+{ 
+	"name" : "Soihtuköynnös",
+	"latinName" : "Aeschynanthus", 
+	"colors" : ["vihreä","punainen"], 
+	"flowers" :  true
+}
+*/
 
 app.engine('handlebars', exphbs.engine({
   defaultLayout: 'main'
@@ -34,6 +50,7 @@ app.get('/', (req,res) => {
     plants: plants
   });
 })
+
 //GET ONE
 app.get('/:id', (req,res ) => {
   const id = Number(req.params.id);
@@ -51,6 +68,7 @@ app.get('/:id', (req,res ) => {
     );
   }
 });
+
 //DELETE
 app.delete('/:id', (req,res) => {
   const id = Number(req.params.id);
@@ -94,7 +112,6 @@ app.patch('/:id', (req, res) => {
     }
   })
   res.json(plants);
-
   });
 
 const PORT = process.env.PORT || 8000;
